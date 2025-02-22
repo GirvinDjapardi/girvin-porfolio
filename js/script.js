@@ -14,42 +14,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.sidebar a');
 
-    const isElementInViewport = (el) => {
+    const isSectionVisible = (el) => {
         const rect = el.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         
-        // Consider a section "in view" if its top is in the viewport or if we've scrolled to the bottom
+        // Consider a section visible if any part of it is in the viewport
         return (
-            (rect.top >= 0 && rect.top <= windowHeight * 0.7) || 
-            (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+            (rect.top < windowHeight && rect.bottom >= 0) || 
+            // Special case for the last section when at bottom of page
+            (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10
         );
     };
 
     window.addEventListener('scroll', () => {
-        let currentSection = '';
-        
         // Check if we're at the bottom of the page
         const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10;
         
         if (isAtBottom) {
             // If at bottom, highlight the last section (contact)
-            currentSection = 'contact';
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#contact') {
+                    link.classList.add('active');
+                }
+            });
         } else {
-            // Otherwise check which section is in view
+            // Check each section's visibility
             sections.forEach(section => {
-                if (isElementInViewport(section)) {
-                    currentSection = section.getAttribute('id');
+                const sectionId = section.getAttribute('id');
+                const correspondingLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
+                
+                if (correspondingLink && isSectionVisible(section)) {
+                    correspondingLink.classList.add('active');
+                } else if (correspondingLink) {
+                    correspondingLink.classList.remove('active');
                 }
             });
         }
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === currentSection) {
-                link.classList.add('active');
-            }
-        });
     });
+
+    // Trigger scroll event on page load to set initial active section
+    window.dispatchEvent(new Event('scroll'));
 
     // Project filtering
     const createFilterButtons = () => {
