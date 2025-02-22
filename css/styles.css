@@ -81,7 +81,7 @@ body {
     display: flex;
     align-items: center;
     gap: 30px;
-    margin-bottom: 40px;
+    margin: 40px 0;
     flex-wrap: wrap;
 }
 
@@ -112,6 +112,15 @@ body {
 section {
     padding: 40px 0;
     margin-bottom: 20px;
+}
+
+section h1 {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.sectionFlex {
+    margin-top: 0;
 }
 
 section#about {
