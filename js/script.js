@@ -14,18 +14,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.sidebar a');
 
+    const isElementInViewport = (el) => {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        
+        // Consider a section "in view" if its top is in the viewport or if we've scrolled to the bottom
+        return (
+            (rect.top >= 0 && rect.top <= windowHeight * 0.7) || 
+            (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight
+        );
+    };
+
     window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            if (window.scrollY >= sectionTop - 60) {
-                current = section.getAttribute('id');
-            }
-        });
+        let currentSection = '';
+        
+        // Check if we're at the bottom of the page
+        const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10;
+        
+        if (isAtBottom) {
+            // If at bottom, highlight the last section (contact)
+            currentSection = 'contact';
+        } else {
+            // Otherwise check which section is in view
+            sections.forEach(section => {
+                if (isElementInViewport(section)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+        }
 
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href').slice(1) === current) {
+            if (link.getAttribute('href').slice(1) === currentSection) {
                 link.classList.add('active');
             }
         });

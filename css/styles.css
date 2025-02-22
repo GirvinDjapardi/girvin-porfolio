@@ -59,6 +59,14 @@ body {
     gap: 20px;
     flex-wrap: wrap;
     margin: 20px 0;
+    width: 100%;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .project-image {
@@ -66,6 +74,24 @@ body {
     height: auto;
     object-fit: contain;
     max-width: 500px;
+}
+
+/* Section spacing */
+section {
+    min-height: 50vh;
+    padding: 40px 0;
+    margin-bottom: 20px;
+}
+
+section:last-of-type {
+    min-height: 30vh;
+    margin-bottom: 0;
+}
+
+hr {
+    margin: 40px 0;
+    border: none;
+    border-top: 1px solid #eee;
 }
 
 /* Project Card Styling */
