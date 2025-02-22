@@ -78,18 +78,25 @@ body {
 
 /* Section spacing */
 section {
-    min-height: 50vh;
-    padding: 40px 0;
+    padding: 20px 0;
     margin-bottom: 20px;
 }
 
+section#about {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+section#education {
+    padding-top: 20px;
+}
+
 section:last-of-type {
-    min-height: 30vh;
     margin-bottom: 0;
 }
 
 hr {
-    margin: 40px 0;
+    margin: 20px 0;
     border: none;
     border-top: 1px solid #eee;
 }
