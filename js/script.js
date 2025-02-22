@@ -19,37 +19,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         
         // Consider a section visible if any part of it is in the viewport
-        return (
-            (rect.top < windowHeight && rect.bottom >= 0) || 
-            // Special case for the last section when at bottom of page
-            (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10
-        );
+        return rect.top < windowHeight && rect.bottom >= 0;
     };
 
     window.addEventListener('scroll', () => {
+        // First remove active class from all links
+        navLinks.forEach(link => link.classList.remove('active'));
+
         // Check if we're at the bottom of the page
         const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 10;
         
         if (isAtBottom) {
-            // If at bottom, highlight the last section (contact)
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#contact') {
-                    link.classList.add('active');
-                }
-            });
+            // If at bottom, highlight the contact section
+            const contactLink = document.querySelector('.sidebar a[href="#contact"]');
+            if (contactLink) contactLink.classList.add('active');
         } else {
-            // Check each section's visibility
-            sections.forEach(section => {
-                const sectionId = section.getAttribute('id');
+            // Find the first visible section
+            let activeSection = null;
+            
+            // Convert NodeList to Array to use find()
+            const sectionsArray = Array.from(sections);
+            activeSection = sectionsArray.find(section => isSectionVisible(section));
+
+            // If we found a visible section, highlight its link
+            if (activeSection) {
+                const sectionId = activeSection.getAttribute('id');
                 const correspondingLink = document.querySelector(`.sidebar a[href="#${sectionId}"]`);
-                
-                if (correspondingLink && isSectionVisible(section)) {
+                if (correspondingLink) {
                     correspondingLink.classList.add('active');
-                } else if (correspondingLink) {
-                    correspondingLink.classList.remove('active');
                 }
-            });
+            }
         }
     });
 
