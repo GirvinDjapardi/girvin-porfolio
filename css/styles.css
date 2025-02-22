@@ -1,0 +1,261 @@
+/* Base styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout */
+.bodyFlex {
+    display: grid;
+    grid-template-columns: 200px auto;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sidebar */
+.side {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.sidebar {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: #666666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+    color: #000000;
+    padding-left: 15px;
+    background-color: #f5f5f5;
+}
+
+.sidebar a.active {
+    color: #0066cc;
+    background-color: #f0f7ff;
+    border-right: 3px solid #0066cc;
+}
+
+/* Image containers and responsive images */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.project-image {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+    max-width: 500px;
+}
+
+/* Project Card Styling */
+.project-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.project-card h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.8em;
+}
+
+.project-card .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.project-card .tag {
+    background: #f0f0f0;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.project-card .project-description {
+    margin: 15px 0;
+    line-height: 1.6;
+}
+
+/* Work Experience Card Styling */
+.work-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 30px 0;
+    border-left: 4px solid #0066cc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.work-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.work-card .company-logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.work-card .role-title {
+    color: #333;
+    font-size: 1.4em;
+    margin: 10px 0;
+}
+
+.work-card .work-period {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+/* Contact links styling */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #0066cc;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.contact-link:hover {
+    color: #004999;
+    text-decoration: underline;
+}
+
+.contact-link i {
+    font-size: 1.2em;
+}
+
+/* Back to top button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0066cc;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.back-to-top:hover {
+    background: #004999;
+    transform: translateY(-3px);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+}
+
+/* Project filters */
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: #f0f7ff;
+    color: #0066cc;
+    border-color: #0066cc;
+}
+
+.filter-btn.active {
+    background: #0066cc;
+    color: white;
+    border-color: #0066cc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .bodyFlex {
+        grid-template-columns: 1fr;
+    }
+    
+    .image-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .project-image {
+        width: 90%;
+        max-width: 400px;
+    }
+    
+    .back-to-top {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .project-filters {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .project-image {
+        width: 45%;
+    }
+}
