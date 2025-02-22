@@ -40,13 +40,13 @@ body {
 
 .sidebar a:hover {
     border-right-color: #ccc;
-    background-color: #f5f5f5;
+    background-color: #e8e8e8;
 }
 
 .sidebar a.active {
     color: #007bff;
     border-right-color: #007bff;
-    background-color: #f5f5f5;
+    background-color: #e8e8e8;
     font-weight: 500;
 }
 
@@ -57,7 +57,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #f5f5f5;
+    background-color: #e8e8e8;
     z-index: -1;
 }
 
