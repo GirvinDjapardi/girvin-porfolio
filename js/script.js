@@ -98,16 +98,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const filterProjects = (tag) => {
         const projects = document.querySelectorAll('.project-card');
+        
+        if (!projects.length) {
+            console.warn('No project cards found');
+            return;
+        }
+
         projects.forEach(project => {
-            if (tag === 'All') {
-                project.style.display = 'block';
-                return;
-            }
-            const tags = project.querySelectorAll('.tag');
-            const hasTag = Array.from(tags).some(t => t.textContent === tag);
-            project.style.display = hasTag ? 'block' : 'none';
+            const projectTags = project.querySelectorAll('.tag');
+            const shouldShow = tag === 'All' || Array.from(projectTags).some(t => t.textContent === tag);
+            project.style.display = shouldShow ? 'block' : 'none';
         });
     };
 
-    createFilterButtons();
+    try {
+        createFilterButtons();
+    } catch (error) {
+        console.error('Error creating filter buttons:', error);
+    }
 });
