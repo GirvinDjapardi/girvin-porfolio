@@ -222,8 +222,8 @@ hr {
 }
 
 .work-card .work-period {
-    color: #666;
-    font-size: 0.9em;
+    font-style: italic;
+    color: #e0e0e0;
     margin-bottom: 15px;
 }
 
@@ -406,18 +406,16 @@ hr {
     }
 
     .work-period {
-        color: #b3b3b3; /* Lighter gray for better visibility */
-        opacity: 1; /* Ensure full opacity */
+        font-style: italic;
+        color: #e0e0e0; /* Same as role title for better visibility */
     }
 
     .role-title {
         color: #e0e0e0;
-        opacity: 1;
     }
 
     .work-card h2.role-title {
         color: #e0e0e0;
-        opacity: 1;
     }
 
     .sidebar a {
