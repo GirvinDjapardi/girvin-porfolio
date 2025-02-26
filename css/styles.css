@@ -461,6 +461,18 @@ hr {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
+    .role-title {
+        color: #e0e0e0;
+    }
+
+    .work-period {
+        color: #e0e0e0;
+    }
+
+    .work-card h2.role-title {
+        color: #e0e0e0;
+    }
+
     /* Mobile dark mode adjustments */
     @media screen and (max-width: 768px) {
         .sidebar {
