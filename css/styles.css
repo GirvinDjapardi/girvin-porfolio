@@ -227,18 +227,21 @@ hr {
     margin-bottom: 15px;
 }
 
-/* Education and Work logos */
+/* Work logo sizing */
+.work-logo img {
+    width: 220px;
+    height: auto;
+    object-fit: contain;
+    margin: 20px 0;
+}
+
 .sectionFlex .left img {
-    width: 150px; /* Reduced by 25% from original size */
+    width: 150px;
     height: auto;
     object-fit: contain;
 }
 
-.work-logo {
-    width: 220px; /* Increased by 10% */
-    height: auto;
-    object-fit: contain;
-}
+/* Education and Work logos */
 
 /* Contact links styling */
 .contact-links {
@@ -411,6 +414,21 @@ hr {
         color: #e0e0e0;
     }
 
+    .work-period {
+        color: #b3b3b3; /* Lighter gray for better visibility */
+        opacity: 1; /* Ensure full opacity */
+    }
+
+    .role-title {
+        color: #e0e0e0;
+        opacity: 1;
+    }
+
+    .work-card h2.role-title {
+        color: #e0e0e0;
+        opacity: 1;
+    }
+
     .sidebar a {
         color: #e0e0e0;
     }
@@ -459,18 +477,6 @@ hr {
     .profile-image {
         border-color: #333;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .role-title {
-        color: #e0e0e0;
-    }
-
-    .work-period {
-        color: #e0e0e0;
-    }
-
-    .work-card h2.role-title {
-        color: #e0e0e0;
     }
 
     /* Mobile dark mode adjustments */
